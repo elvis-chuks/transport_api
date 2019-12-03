@@ -33,6 +33,9 @@ func test(w http.ResponseWriter, r *http.Request){
 
 func main(){
 	fmt.Println("this is the pmt api written in go")
+
+	// sql connection string
+
 	connString := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d;database=%s;",
 		server,user,password,port,database)
 
@@ -46,7 +49,7 @@ func main(){
 	
 	defer conn.Close()
 	
-
+	
 	router := mux.NewRouter()
 
 	router.HandleFunc("/1",test).Methods("GET")

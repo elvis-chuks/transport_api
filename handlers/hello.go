@@ -22,6 +22,7 @@ var (
 
 func helloData() models.FullResp{
 
+	// sql connection string
 	connString := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d;database=%s;",
 		server,user,password,port,database)
 
@@ -32,7 +33,7 @@ func helloData() models.FullResp{
 	}
 
 	db := conn
-
+	// sql query
 	tsql := `
 	SELECT oru FROM dbo.zroute
 	GROUP BY oru;
@@ -47,7 +48,7 @@ func helloData() models.FullResp{
 
 	// create empty list
 	var oruList []string
-
+	// iterate through rows and drop the values into the oruList array
 	for rows.Next(){
 		var oru string
 
@@ -63,7 +64,7 @@ func helloData() models.FullResp{
 
 	var list []models.Resp
 	
-	
+	// iterate through the oruList array and query the database for depot details
 	for _,i := range oruList {
 
 		tsql = fmt.Sprintf(`
@@ -87,6 +88,8 @@ func helloData() models.FullResp{
 		if err != nil {
 			fmt.Println("error Looping rows")
 		}
+
+		// create a map of type models.Resp and append it to
 
 		res := models.Resp{"depotid":id,"name":name,"depotcode":i,"number":number,"bankaccountnumber":account}
 
@@ -115,5 +118,5 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(data)
 
-	Logger("/v3/home")
+	Logger("/v3/home") // call the logger helper function
 }

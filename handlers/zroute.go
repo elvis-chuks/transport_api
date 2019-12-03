@@ -42,8 +42,11 @@ func zrouteData(r string) models.FullResp {
 	}
 
 	defer rows.Close()
+
 	var res []models.Resp
+
 	var tempRes []models.Resp
+	
 	for rows.Next() {
 		var id,dru string
 		err := rows.Scan(&id,&dru)
