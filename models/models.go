@@ -8,3 +8,12 @@ type FullResp struct {
 	Depot []Resp  `json:"depot,omitempty"`
 	Routes []Resp `json:"routes,omitempty"`
 }
+
+type Discount struct {
+	Status string `json:"status"`
+	Busclassid string `json:"busClassId"`
+	Busorderid string  `json:"busOrderId"`
+	Discountid string `json:"discountId"`
+	Discountname string `json:"discountName"`
+	Discountamount string `json:"discountAmount"`
+}
