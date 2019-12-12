@@ -73,7 +73,7 @@ func busqueueData(routeid string) models.FullResp {
 
 func Busqueue(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
-
+	fmt.Println(r.Header)
 	routeId := r.Header["Routeid"][0]
 
 	data := busqueueData(routeId)
