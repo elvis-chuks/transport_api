@@ -53,6 +53,10 @@ func main() {
 	router.HandleFunc("/v3/hello", handlers.Hello).Methods("GET")
 	router.HandleFunc("/v3/zroute", handlers.Zroute).Methods("GET")
 	router.HandleFunc("/v3/discount", handlers.Discount).Methods("GET")
+	router.HandleFunc("/v3/buses", handlers.Busqueue).Methods("GET")
+	router.HandleFunc("/v3/seatamount", handlers.SeatAmnt).Methods("GET")
+	router.HandleFunc("/v3/seats", handlers.Seats).Methods("GET")
+	router.HandleFunc("/v3/trips", handlers.Trips).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":5000", router))
 }
